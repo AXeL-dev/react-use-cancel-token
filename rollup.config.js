@@ -25,7 +25,7 @@ export default {
   plugins: [
     external(),
     url({ exclude: ['**/*.svg'] }),
-    resolve(),
+    resolve({ browser: true, preferBuiltins: false }),
     typescript(),
     commonjs({ extensions: ['.js', '.ts'] })
   ]

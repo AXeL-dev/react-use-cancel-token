@@ -1,23 +1,36 @@
 import * as React from 'react';
+import axios, { CancelTokenSource, CancelToken } from 'axios';
 
-export const useMyHook = () => {
-  let [{
-    counter
-  }, setState] = React.useState<{
-    counter: number;
-  }>({
-    counter: 0
-  });
+/**
+ * When a component unmounts, we need to cancel any potentially
+ * ongoing Axios calls that result in a state update on success / fail.
+ * This hook sets up the appropriate useEffect to handle the canceling.
+ * This hook also allows manual requests cancellation.
+ * https://dev.to/tmns/usecanceltoken-a-custom-react-hook-for-cancelling-axios-requests-1ia4
+ *
+ * @returns {newCancelToken: function, cancelPreviousRequest: function, isCancel: function}
+ * newCancelToken - used to generate the cancel token sent in the Axios request.
+ * cancelPreviousRequest - used to manually cancel previous Axios requests.
+ * isCancel - used to check if error returned in response is a cancel token error.
+ */
+const useCancelToken = (): {
+  newCancelToken: () => void;
+  cancelPreviousRequest: () => void;
+  isCancel: (value: any) => boolean;
+} => {
+  const axiosSource: React.MutableRefObject<CancelTokenSource | null> = React.useRef(null);
+  const newCancelToken = (): CancelToken => {
+    axiosSource.current = axios.CancelToken.source();
+    return axiosSource.current.token;
+  };
 
-  React.useEffect(() => {
-    let interval = window.setInterval(() => {
-      counter++;
-      setState({counter})
-    }, 1000)
-    return () => {
-      window.clearInterval(interval);
-    };
-  }, []);
+  const cancelPreviousRequest = (...params: any) => {
+    if (axiosSource.current) axiosSource.current.cancel(...params);
+  };
 
-  return counter;
+  React.useEffect(() => cancelPreviousRequest, []);
+
+  return { newCancelToken, cancelPreviousRequest, isCancel: axios.isCancel };
 };
+
+export default useCancelToken;
