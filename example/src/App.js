@@ -16,9 +16,7 @@ const App = () => {
     try {
       const response = await axios.get(
         `https://api.github.com/search/repositories?q=${keywords}&sort=stars&order=desc`,
-        {
-          cancelToken: newCancelToken(),
-        }
+        { cancelToken: newCancelToken() }
       );
 
       if (response.status === 200) {

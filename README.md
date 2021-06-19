@@ -13,18 +13,31 @@ npm install --save react-use-cancel-token
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import * as React from 'react';
+import axios from 'axios';
 
-import { useMyHook } from 'react-use-cancel-token'
+import useCancelToken from 'react-use-cancel-token';
 
 const Example = () => {
-  const example = useMyHook()
-  return (
-    <div>
-      {example}
-    </div>
-  )
-}
+  const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
+
+  const handleClick = async () => {
+    cancelPreviousRequest();
+
+    try {
+      const response = await axios.get('request_url', { cancelToken: newCancelToken() });
+
+      if (response.status === 200) {
+        // handle success
+      }
+    } catch (err) {
+      if (isCancel(err)) return;
+      console.error(err);
+    }
+  };
+
+  return <button onClick={handleClick}>send request</button>;
+};
 ```
 
 ## License
