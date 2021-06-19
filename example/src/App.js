@@ -11,6 +11,12 @@ const App = () => {
 
   const performSearch = async (keywords) => {
     cancelPreviousRequest();
+
+    if (!keywords) {
+      setResult('No keywords.');
+      return;
+    };
+
     setSearching(true);
 
     try {
