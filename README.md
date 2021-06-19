@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/react-use-cancel-token.svg)](https://www.npmjs.com/package/react-use-cancel-token) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+### [Demo](https://axel-dev.github.io/react-use-cancel-token/)
+
 ## Install
 
 ```bash
