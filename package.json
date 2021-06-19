@@ -2,6 +2,11 @@
   "name": "react-use-cancel-token",
   "version": "1.0.0",
   "description": "A handy react hook to cancel axios requests",
+  "keywords": [
+    "React",
+    "Axios",
+    "Cancel token"
+  ],
   "author": "AXeL-dev",
   "license": "MIT",
   "repository": "AXeL-dev/react-use-cancel-token",
