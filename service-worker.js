@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-use-cancel-token/precache-manifest.16b64cbf02aff9fdfae591cd25323ca2.js"
+  "/react-use-cancel-token/precache-manifest.f4b5dd3ace9c39a02f4b3fa5dfc96626.js"
 );
 
 self.addEventListener('message', (event) => {
