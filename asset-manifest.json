@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-use-cancel-token/static/css/main.2c6a48fe.chunk.css",
+    "main.js": "/react-use-cancel-token/static/js/main.227eddfa.chunk.js",
+    "main.js.map": "/react-use-cancel-token/static/js/main.227eddfa.chunk.js.map",
+    "runtime-main.js": "/react-use-cancel-token/static/js/runtime-main.2c08e292.js",
+    "runtime-main.js.map": "/react-use-cancel-token/static/js/runtime-main.2c08e292.js.map",
+    "static/js/2.83a252d8.chunk.js": "/react-use-cancel-token/static/js/2.83a252d8.chunk.js",
+    "static/js/2.83a252d8.chunk.js.map": "/react-use-cancel-token/static/js/2.83a252d8.chunk.js.map",
+    "index.html": "/react-use-cancel-token/index.html",
+    "precache-manifest.16b64cbf02aff9fdfae591cd25323ca2.js": "/react-use-cancel-token/precache-manifest.16b64cbf02aff9fdfae591cd25323ca2.js",
+    "service-worker.js": "/react-use-cancel-token/service-worker.js",
+    "static/css/main.2c6a48fe.chunk.css.map": "/react-use-cancel-token/static/css/main.2c6a48fe.chunk.css.map",
+    "static/js/2.83a252d8.chunk.js.LICENSE.txt": "/react-use-cancel-token/static/js/2.83a252d8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2c08e292.js",
+    "static/js/2.83a252d8.chunk.js",
+    "static/css/main.2c6a48fe.chunk.css",
+    "static/js/main.227eddfa.chunk.js"
+  ]
+}
