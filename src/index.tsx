@@ -24,8 +24,8 @@ const useCancelToken = (): {
     return axiosSource.current.token;
   };
 
-  const cancelPreviousRequest = (...params: any) => {
-    if (axiosSource.current) axiosSource.current.cancel(...params);
+  const cancelPreviousRequest = (message?: string) => {
+    if (axiosSource.current) axiosSource.current.cancel(message);
   };
 
   React.useEffect(() => cancelPreviousRequest, []);

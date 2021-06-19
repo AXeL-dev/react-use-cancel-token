@@ -4,6 +4,7 @@
   "description": "A handy react hook to cancel axios requests",
   "keywords": [
     "React",
+    "Hook",
     "Axios",
     "Cancel token"
   ],
