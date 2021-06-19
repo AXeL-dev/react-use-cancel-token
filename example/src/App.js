@@ -5,12 +5,11 @@ import _ from 'lodash';
 import useCancelToken from 'react-use-cancel-token';
 
 const App = () => {
-  const [search, setSearch] = React.useState('');
   const [searching, setSearching] = React.useState(false);
   const [result, setResult] = React.useState('No results.');
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
 
-  const performSearch = async (keywords = search) => {
+  const performSearch = async (keywords) => {
     cancelPreviousRequest();
     setSearching(true);
 
@@ -34,14 +33,10 @@ const App = () => {
     setSearching(false);
   };
 
-  const delayedSearch = React.useCallback(
-    _.debounce((value) => performSearch(value), 700),
-    [performSearch]
-  );
+  const delayedSearch = React.useCallback(_.debounce(performSearch, 400), [performSearch]);
 
-  const handleInputChange = (event) => {
+  const handleChange = (event) => {
     const { value } = event.target;
-    setSearch(value);
     delayedSearch(value);
   };
 
@@ -50,9 +45,16 @@ const App = () => {
     setSearching(false);
   };
 
+  const handleKeyDown = (event) => {
+    const { value } = event.target;
+    if (event.key === 'Enter') {
+      performSearch(value);
+    }
+  };
+
   return (
     <>
-      <input type="text" placeholder="Search..." value={search} onChange={handleInputChange} />
+      <input type="text" placeholder="Search..." onChange={handleChange} onKeyDown={handleKeyDown} />
       <button onClick={handleCancel} disabled={!searching}>
         Cancel
       </button>
@@ -66,7 +68,9 @@ const App = () => {
             <ul>
               {result.map((item, index) => (
                 <li key={index}>
-                  <a href={item.html_url} target="_blank" rel="noopener noreferrer">{item.name}</a>
+                  <a href={item.html_url} target="_blank" rel="noopener noreferrer">
+                    {item.name}
+                  </a>
                 </li>
               ))}
             </ul>
