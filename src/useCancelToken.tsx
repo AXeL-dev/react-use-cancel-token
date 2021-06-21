@@ -16,16 +16,16 @@ import { UseCancelToken, SourceRef, CancelToken } from './types';
  * isCancel - used to check if error returned in response is a cancel token error.
  */
 export const useCancelToken = (): UseCancelToken => {
-  const axiosSource: SourceRef = useRef(null);
+  const source: SourceRef = useRef(null);
   const { CancelToken: cancelToken, isCancel } = axios;
 
   const newCancelToken = (): CancelToken => {
-    axiosSource.current = cancelToken.source();
-    return axiosSource.current.token;
+    source.current = cancelToken.source();
+    return source.current.token;
   };
 
   const cancelPreviousRequest = (message?: string): void => {
-    if (axiosSource.current) axiosSource.current.cancel(message);
+    if (source.current) source.current.cancel(message);
   };
 
   useEffect(() => cancelPreviousRequest, []);
