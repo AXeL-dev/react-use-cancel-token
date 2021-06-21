@@ -13,7 +13,7 @@ import axios, { CancelTokenSource, CancelToken } from 'axios';
  * cancelPreviousRequest - used to manually cancel previous Axios requests.
  * isCancel - used to check if error returned in response is a cancel token error.
  */
-const useCancelToken = (): {
+export const useCancelToken = (): {
   newCancelToken: () => void;
   cancelPreviousRequest: () => void;
   isCancel: (value: any) => boolean;
@@ -32,5 +32,3 @@ const useCancelToken = (): {
 
   return { newCancelToken, cancelPreviousRequest, isCancel: axios.isCancel };
 };
-
-export default useCancelToken;
