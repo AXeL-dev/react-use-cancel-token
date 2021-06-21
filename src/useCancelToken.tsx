@@ -1,5 +1,7 @@
-import * as React from 'react';
-import axios, { CancelTokenSource, CancelToken } from 'axios';
+import { useEffect, useRef } from 'react';
+import axios from 'axios';
+
+import { UseCancelToken, SourceRef, CancelToken } from './types';
 
 /**
  * When a component unmounts, we need to cancel any potentially
@@ -13,22 +15,20 @@ import axios, { CancelTokenSource, CancelToken } from 'axios';
  * cancelPreviousRequest - used to manually cancel previous Axios requests.
  * isCancel - used to check if error returned in response is a cancel token error.
  */
-export const useCancelToken = (): {
-  newCancelToken: () => void;
-  cancelPreviousRequest: () => void;
-  isCancel: (value: any) => boolean;
-} => {
-  const axiosSource: React.MutableRefObject<CancelTokenSource | null> = React.useRef(null);
+export const useCancelToken = (): UseCancelToken => {
+  const axiosSource: SourceRef = useRef(null);
+  const { CancelToken: cancelToken, isCancel } = axios;
+
   const newCancelToken = (): CancelToken => {
-    axiosSource.current = axios.CancelToken.source();
+    axiosSource.current = cancelToken.source();
     return axiosSource.current.token;
   };
 
-  const cancelPreviousRequest = (message?: string) => {
+  const cancelPreviousRequest = (message?: string): void => {
     if (axiosSource.current) axiosSource.current.cancel(message);
   };
 
-  React.useEffect(() => cancelPreviousRequest, []);
+  useEffect(() => cancelPreviousRequest, []);
 
-  return { newCancelToken, cancelPreviousRequest, isCancel: axios.isCancel };
+  return { newCancelToken, cancelPreviousRequest, isCancel };
 };
