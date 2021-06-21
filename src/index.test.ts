@@ -2,9 +2,10 @@ import useCancelToken from './';
 import { renderHook } from '@testing-library/react-hooks';
 jest.mock('./useCancelToken');
 
+const cancelToken = '123456';
 const isCancelReturnValue = false;
 const useCancelTokenMock = {
-  newCancelToken: jest.fn(),
+  newCancelToken: jest.fn().mockReturnValue(cancelToken),
   cancelPreviousRequest: jest.fn(),
   isCancel: jest.fn().mockReturnValue(isCancelReturnValue),
 };
@@ -31,6 +32,7 @@ describe('useCancelToken', () => {
     result.current.newCancelToken();
 
     expect(useCancelTokenMock.newCancelToken).toHaveBeenCalledTimes(1);
+    expect(useCancelTokenMock.newCancelToken).toHaveReturnedWith(cancelToken);
   });
 
   it('should cancel the previous request on demand', () => {
