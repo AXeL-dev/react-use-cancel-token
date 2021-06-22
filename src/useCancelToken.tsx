@@ -10,7 +10,8 @@ import { UseCancelToken, SourceRef, CancelToken } from './types';
  * This hook also allows manual requests cancellation.
  * https://dev.to/tmns/usecanceltoken-a-custom-react-hook-for-cancelling-axios-requests-1ia4
  *
- * @returns {newCancelToken: function, cancelPreviousRequest: function, isCancel: function}
+ * @returns {source: ref, newCancelToken: function, cancelPreviousRequest: function, isCancel: function}
+ * source - used to access/set Axios cancel token source object.
  * newCancelToken - used to generate the cancel token sent in the Axios request.
  * cancelPreviousRequest - used to manually cancel previous Axios requests.
  * isCancel - used to check if error returned in response is a cancel token error.
@@ -30,5 +31,5 @@ export const useCancelToken = (): UseCancelToken => {
 
   useEffect(() => cancelPreviousRequest, []);
 
-  return { newCancelToken, cancelPreviousRequest, isCancel };
+  return { source, newCancelToken, cancelPreviousRequest, isCancel };
 };

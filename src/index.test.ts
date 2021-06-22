@@ -2,9 +2,11 @@ import useCancelToken from './';
 import { renderHook } from '@testing-library/react-hooks';
 jest.mock('./useCancelToken');
 
+const source = { current: null };
 const cancelToken = '123456';
 const isCancelReturnValue = false;
 const useCancelTokenMock = {
+  source,
   newCancelToken: jest.fn().mockReturnValue(cancelToken),
   cancelPreviousRequest: jest.fn(),
   isCancel: jest.fn().mockReturnValue(isCancelReturnValue),
@@ -20,6 +22,7 @@ describe('useCancelToken', () => {
 
     expect(result.current).toEqual(
       expect.objectContaining({
+        source: expect.objectContaining(source),
         newCancelToken: expect.any(Function),
         cancelPreviousRequest: expect.any(Function),
         isCancel: expect.any(Function),
