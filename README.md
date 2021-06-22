@@ -2,7 +2,9 @@
 
 > A handy react hook to cancel axios requests
 
-[![NPM](https://img.shields.io/npm/v/react-use-cancel-token.svg)](https://www.npmjs.com/package/react-use-cancel-token) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-use-cancel-token.svg)](https://www.npmjs.com/package/react-use-cancel-token)
+[![Downloads](https://img.shields.io/npm/dt/react-use-cancel-token.svg)](https://www.npmjs.com/package/react-use-cancel-token)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-green.svg)](https://standardjs.com)
 
 ### [Demo](https://axel-dev.github.io/react-use-cancel-token/)
 
@@ -41,6 +43,15 @@ const Example = () => {
   return <button onClick={handleClick}>send request</button>;
 };
 ```
+
+## Outputs
+
+| Property              | Type              | Description                                                           |
+| --------------------- | ----------------- | --------------------------------------------------------------------- |
+| source                | MutableObjectRef  | Reference to Axios cancel token source                                |
+| newCancelToken        | () => CancelToken | Generate the cancel token sent in the Axios request                   |
+| cancelPreviousRequest | () => void        | Cancel any previous Axios request                                     |
+| isCancel              | () => boolean     | Check if the error returned in Axios response is a cancel token error |
 
 ## License
 

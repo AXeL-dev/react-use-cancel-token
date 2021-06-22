@@ -4,13 +4,14 @@
   "description": "A handy react hook to cancel axios requests",
   "keywords": [
     "React",
-    "Hook",
     "Axios",
-    "Cancel token"
+    "Cancel token",
+    "react-hook"
   ],
   "author": "AXeL-dev",
   "license": "MIT",
   "repository": "AXeL-dev/react-use-cancel-token",
+  "homepage": "https://axel-dev.github.io/react-use-cancel-token/",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
