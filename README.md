@@ -1,10 +1,10 @@
-# react-use-cancel-token
-
-> A handy react hook to cancel axios requests
+# useCancelToken
 
 [![NPM](https://img.shields.io/npm/v/react-use-cancel-token.svg)](https://www.npmjs.com/package/react-use-cancel-token)
 [![Downloads](https://img.shields.io/npm/dt/react-use-cancel-token.svg)](https://www.npmjs.com/package/react-use-cancel-token)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-green.svg)](https://standardjs.com)
+
+> A handy react hook to cancel axios requests
 
 ### [Demo](https://axel-dev.github.io/react-use-cancel-token/)
 
@@ -46,17 +46,13 @@ const Example = () => {
 
 ## Outputs
 
-| Property              | Type              | Description                                                           |
-| --------------------- | ----------------- | --------------------------------------------------------------------- |
-| source                | MutableObjectRef  | Reference to Axios cancel token source                                |
-| newCancelToken        | () => CancelToken | Generate the cancel token sent in the Axios request                   |
-| cancelPreviousRequest | () => void        | Cancel any previous Axios request                                     |
-| isCancel              | () => boolean     | Check if the error returned in Axios response is a cancel token error |
+| Property                | Type                | Description                                                           |
+| ----------------------- | ------------------- | --------------------------------------------------------------------- |
+| `source`                | `MutableObjectRef`  | Reference to Axios cancel token source                                |
+| `newCancelToken`        | `() => CancelToken` | Generate the cancel token sent in the Axios request                   |
+| `cancelPreviousRequest` | `() => void`        | Cancel any previous Axios request                                     |
+| `isCancel`              | `() => boolean`     | Check if the error returned in Axios response is a cancel token error |
 
 ## License
 
 MIT © [AXeL-dev](https://github.com/AXeL-dev)
-
----
-
-This hook is created using [create-react-hook](https://github.com/hermanya/create-react-hook).
