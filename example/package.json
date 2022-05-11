@@ -6,10 +6,10 @@
   "private": true,
   "dependencies": {
     "lodash": "^4.17.21",
-    "react": "link:../node_modules/react",
+    "react": "file:../node_modules/react",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.0.1",
-    "react-use-cancel-token": "link:.."
+    "react-use-cancel-token": "file:.."
   },
   "scripts": {
     "start": "react-scripts start",

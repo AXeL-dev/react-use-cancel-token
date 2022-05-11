@@ -2,12 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 
-import useCancelToken from 'react-use-cancel-token';
+import useAbortController from 'react-use-cancel-token';
 
 const App = () => {
   const [searching, setSearching] = React.useState(false);
   const [result, setResult] = React.useState('No results.');
-  const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
+  const { newAbortSignal, cancelPreviousRequest, isCancel } = useAbortController();
 
   const performSearch = async (keywords) => {
     cancelPreviousRequest();
@@ -22,7 +22,7 @@ const App = () => {
     try {
       const response = await axios.get(
         `https://api.github.com/search/repositories?q=${keywords}&sort=stars&order=desc`,
-        { cancelToken: newCancelToken() }
+        { signal: newAbortSignal() }
       );
 
       if (response.status === 200) {

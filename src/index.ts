@@ -1,3 +1,4 @@
-import { useCancelToken } from './useCancelToken';
+import { useAbortController } from './useAbortController';
+export { useCancelToken } from './useCancelToken';
 
-export default useCancelToken;
+export default useAbortController;
