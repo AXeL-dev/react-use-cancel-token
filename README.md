@@ -16,11 +16,52 @@ npm install --save react-use-cancel-token
 
 ## Usage
 
+### useAbortController
+
 ```tsx
 import * as React from 'react';
 import axios from 'axios';
 
-import useCancelToken from 'react-use-cancel-token';
+import useAbortController from 'react-use-cancel-token';
+
+const Example = () => {
+  const { newAbortSignal, cancelPreviousRequest, isCancel } =  useAbortController();
+
+  const handleClick = async () => {
+    cancelPreviousRequest();
+
+    try {
+      const response = await axios.get('request_url', { signal: newAbortSignal() });
+
+      if (response.status === 200) {
+        // handle success
+      }
+    } catch (err) {
+      if (isCancel(err)) return;
+      console.error(err);
+    }
+  };
+
+  return <button onClick={handleClick}>send request</button>;
+};
+```
+
+#### Outputs
+
+| Property                | Type                | Description                                                           |
+| ----------------------- | ------------------- | --------------------------------------------------------------------- |
+| `controller`            | `MutableObjectRef`  | Reference to the AbortController instance                             |
+| `newAbortSignal`        | `() => AbortSignal` | Generate the abort signal sent in the Axios request                   |
+| `cancelPreviousRequest` | `() => void`        | Cancel any previous Axios request                                     |
+| `isCancel`              | `() => boolean`     | Check if the error returned in Axios response is an abort error       |
+
+### useCancelToken (deprecated)
+
+```tsx
+import * as React from 'react';
+import axios from 'axios';
+
+import { useCancelToken } from 'react-use-cancel-token';
 
 const Example = () => {
   const { newCancelToken, cancelPreviousRequest, isCancel } = useCancelToken();
@@ -44,7 +85,7 @@ const Example = () => {
 };
 ```
 
-## Outputs
+#### Outputs
 
 | Property                | Type                | Description                                                           |
 | ----------------------- | ------------------- | --------------------------------------------------------------------- |
