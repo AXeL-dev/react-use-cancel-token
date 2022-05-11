@@ -1,6 +1,6 @@
 {
   "name": "react-use-cancel-token",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A handy react hook to cancel axios requests",
   "keywords": [
     "React",
