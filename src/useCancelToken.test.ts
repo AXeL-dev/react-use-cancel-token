@@ -1,4 +1,4 @@
-import useCancelToken from './';
+import { useCancelToken } from '.';
 import { renderHook } from '@testing-library/react-hooks';
 jest.mock('./useCancelToken');
 
