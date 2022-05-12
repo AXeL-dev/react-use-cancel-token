@@ -8,7 +8,7 @@ import { CancelTokenSource, CancelToken } from 'axios';
 export type UseCancelToken = {
   source: SourceRef;
   newCancelToken: () => CancelToken;
-  cancelPreviousRequest: () => void;
+  cancelPreviousRequest: (message?: string) => void;
   isCancel: (error: any) => boolean;
 };
 
