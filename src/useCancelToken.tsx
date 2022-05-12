@@ -29,7 +29,7 @@ export const useCancelToken = (): UseCancelToken => {
     if (source.current) source.current.cancel(message);
   };
 
-  // Cancel previous request on unmout
+  // Cancel pending request on unmout
   useEffect(() => cancelPreviousRequest, []);
 
   return { source, newCancelToken, cancelPreviousRequest, isCancel };

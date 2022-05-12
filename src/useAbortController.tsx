@@ -15,7 +15,7 @@ export const useAbortController = (): UseAbortController => {
     if (controller.current) controller.current.abort();
   };
 
-  // Cancel previous request on unmout
+  // Cancel pending request on unmout
   useEffect(() => cancelPreviousRequest, []);
 
   return { controller, newAbortSignal, cancelPreviousRequest, isCancel };
