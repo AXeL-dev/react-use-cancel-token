@@ -25,13 +25,15 @@ import axios from 'axios';
 import useAbortController from 'react-use-cancel-token';
 
 const Example = () => {
-  const { newAbortSignal, cancelPreviousRequest, isCancel } =  useAbortController();
+  const { newAbortSignal, cancelPreviousRequest, isCancel } = useAbortController();
 
   const handleClick = async () => {
     cancelPreviousRequest();
 
     try {
-      const response = await axios.get('request_url', { signal: newAbortSignal() });
+      const response = await axios.get('request_url', {
+        signal: newAbortSignal(),
+      });
 
       if (response.status === 200) {
         // handle success
@@ -48,12 +50,12 @@ const Example = () => {
 
 #### Outputs
 
-| Property                | Type                | Description                                                           |
-| ----------------------- | ------------------- | --------------------------------------------------------------------- |
-| `controller`            | `MutableObjectRef`  | Reference to the AbortController instance                             |
-| `newAbortSignal`        | `() => AbortSignal` | Generate the abort signal sent in the Axios request                   |
-| `cancelPreviousRequest` | `() => void`        | Cancel any previous Axios request                                     |
-| `isCancel`              | `() => boolean`     | Check if the error returned in Axios response is an abort error       |
+| Property                | Type                | Description                                                     |
+| ----------------------- | ------------------- | --------------------------------------------------------------- |
+| `controller`            | `MutableObjectRef`  | Reference to the AbortController instance                       |
+| `newAbortSignal`        | `() => AbortSignal` | Generate the abort signal sent in the Axios request             |
+| `cancelPreviousRequest` | `() => void`        | Cancel any previous Axios request                               |
+| `isCancel`              | `() => boolean`     | Check if the error returned in Axios response is an abort error |
 
 ### useCancelToken (deprecated)
 
@@ -70,7 +72,9 @@ const Example = () => {
     cancelPreviousRequest();
 
     try {
-      const response = await axios.get('request_url', { cancelToken: newCancelToken() });
+      const response = await axios.get('request_url', {
+        cancelToken: newCancelToken(),
+      });
 
       if (response.status === 200) {
         // handle success
