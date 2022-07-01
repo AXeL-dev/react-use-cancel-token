@@ -91,12 +91,12 @@ const Example = () => {
 
 #### Outputs
 
-| Property                | Type                | Description                                                           |
-| ----------------------- | ------------------- | --------------------------------------------------------------------- |
-| `source`                | `MutableObjectRef`  | Reference to Axios cancel token source                                |
-| `newCancelToken`        | `() => CancelToken` | Generate the cancel token sent in the Axios request                   |
-| `cancelPreviousRequest` | `() => void`        | Cancel any previous Axios request                                     |
-| `isCancel`              | `() => boolean`     | Check if the error returned in Axios response is a cancel token error |
+| Property                | Type                         | Description                                                           |
+| ----------------------- | ---------------------------- | --------------------------------------------------------------------- |
+| `source`                | `MutableObjectRef`           | Reference to Axios cancel token source                                |
+| `newCancelToken`        | `() => CancelToken`          | Generate the cancel token sent in the Axios request                   |
+| `cancelPreviousRequest` | `(message?: string) => void` | Cancel any previous Axios request                                     |
+| `isCancel`              | `() => boolean`              | Check if the error returned in Axios response is a cancel token error |
 
 ## License
 
